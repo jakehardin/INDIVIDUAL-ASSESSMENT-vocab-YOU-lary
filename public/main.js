@@ -5,7 +5,7 @@ import '../styles/main.scss';
 
 const init = () => {
   document.querySelector('#app').innerHTML = `
-    <h1>OK. Let's get our individual assessment on!</h1>
+    <h1>OK. Do you see me?</h1>
     <small>Click this fun button !</small><br />
     <button class="btn btn-danger" id="click-me">CLICK ME PLS!</button><br />
     <hr />

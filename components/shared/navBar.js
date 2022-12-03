@@ -16,13 +16,7 @@ const navBar = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="sale-books">German Words</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="authors">Korean Words</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="danishWords">Danish Words</a>
+              <a class="nav-link" href="#" id="german-words">Filter by Language</a>
             </li>
             <li>
             <input

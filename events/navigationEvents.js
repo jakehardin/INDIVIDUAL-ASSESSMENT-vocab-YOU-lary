@@ -1,4 +1,4 @@
-import { getVocab } from '../api/vocabData';
+import { getVocab, wordsAreGerman } from '../api/vocabData';
 import { signOut } from '../utils/auth';
 import { showVocab } from '../pages/vocabulary';
 
@@ -12,6 +12,11 @@ const navigationEvents = () => {
   // ALL VOCAB WORDS
   document.querySelector('#all-vocab').addEventListener('click', () => {
     getVocab().then(showVocab);
+  });
+
+  // TODO: BOOKS ON SALE
+  document.querySelector('#german-words').addEventListener('click', () => {
+    wordsAreGerman().then(showVocab);
   });
 };
 

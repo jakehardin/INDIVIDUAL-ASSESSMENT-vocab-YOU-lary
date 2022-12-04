@@ -29,9 +29,35 @@ const deleteVocab = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// TODO: FILTER BOOKS ON SALE
+// FILTER HTML
 const wordsAreHtml = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="html"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+// FILTER CSS
+const wordsAreCss = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="css"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+// FILTER JAVASCRIPT
+const wordsAreJavascript = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="javascript"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -82,5 +108,5 @@ const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getVocab, deleteVocab, wordsAreHtml, createVocab, updateVocab, getSingleWord
+  getVocab, deleteVocab, wordsAreHtml, wordsAreCss, wordsAreJavascript, createVocab, updateVocab, getSingleWord
 };

@@ -21,7 +21,7 @@ const addVocabForm = (obj = {}) => {
       </div>
       <div class="form-group" id="select-author">
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-book">Submit Book
+      <button type="submit" class="btn btn-primary" id="submit-book">Submit Word
       </button>
     </form>`;
 

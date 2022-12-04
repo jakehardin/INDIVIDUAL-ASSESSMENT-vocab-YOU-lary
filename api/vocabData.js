@@ -29,9 +29,35 @@ const deleteVocab = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// TODO: FILTER BOOKS ON SALE
-const wordsAreGerman = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocabulary.json?orderBy="sale"&equalTo=true`, {
+// FILTER HTML
+const wordsAreHtml = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="html"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+// FILTER CSS
+const wordsAreCss = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="css"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+// FILTER JAVASCRIPT
+const wordsAreJavascript = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="javascript"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -69,6 +95,18 @@ const updateVocab = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }, // you technically do not need the options object for GET requests, but using it here for consistency
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data)) // will resolve a single object
+    .catch(reject);
+});
+
 export {
-  getVocab, deleteVocab, wordsAreGerman, createVocab, updateVocab
+  getVocab, deleteVocab, wordsAreHtml, wordsAreCss, wordsAreJavascript, createVocab, updateVocab, getSingleWord
 };

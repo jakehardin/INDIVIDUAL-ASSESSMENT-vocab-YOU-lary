@@ -1,4 +1,6 @@
-import { getVocab, wordsAreGerman } from '../api/vocabData';
+import {
+  getVocab, wordsAreHtml, wordsAreCss, wordsAreJavascript
+} from '../api/vocabData';
 import { signOut } from '../utils/auth';
 import { showVocab } from '../pages/vocabulary';
 
@@ -14,9 +16,19 @@ const navigationEvents = () => {
     getVocab().then(showVocab);
   });
 
-  // TODO: BOOKS ON SALE
-  document.querySelector('#german-words').addEventListener('click', () => {
-    wordsAreGerman().then(showVocab);
+  // FILTER HTML
+  document.querySelector('#html').addEventListener('click', () => {
+    wordsAreHtml().then(showVocab);
+  });
+
+  // FILTER CSS
+  document.querySelector('#css').addEventListener('click', () => {
+    wordsAreCss().then(showVocab);
+  });
+
+  // FILTER JAVASCRIPT
+  document.querySelector('#javascript').addEventListener('click', () => {
+    wordsAreJavascript().then(showVocab);
   });
 };
 

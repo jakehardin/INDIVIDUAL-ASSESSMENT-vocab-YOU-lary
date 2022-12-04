@@ -1,4 +1,4 @@
-import { deleteVocab, getVocab } from '../api/vocabData';
+import { deleteVocab, getVocab, getSingleWord } from '../api/vocabData';
 import { showVocab } from '../pages/vocabulary';
 import addVocabForm from '../components/forms/addVocabForm';
 
@@ -18,6 +18,13 @@ const domEvents = () => {
     }
     if (e.target.id.includes('add-book-btn')) {
       addVocabForm();
+    }
+
+    if (e.target.id.includes('edit-book-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn('CAN YOU SEE ME');
+
+      getSingleWord(firebaseKey).then((wordObj) => addVocabForm(wordObj));
     }
   });
 };

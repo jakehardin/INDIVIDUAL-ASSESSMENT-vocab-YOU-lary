@@ -30,8 +30,8 @@ const deleteVocab = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 // TODO: FILTER BOOKS ON SALE
-const wordsAreGerman = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocabulary.json?orderBy="sale"&equalTo=true`, {
+const wordsAreHtml = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="language"&equalTo="html"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -69,6 +69,18 @@ const updateVocab = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }, // you technically do not need the options object for GET requests, but using it here for consistency
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data)) // will resolve a single object
+    .catch(reject);
+});
+
 export {
-  getVocab, deleteVocab, wordsAreGerman, createVocab, updateVocab
+  getVocab, deleteVocab, wordsAreHtml, createVocab, updateVocab, getSingleWord
 };

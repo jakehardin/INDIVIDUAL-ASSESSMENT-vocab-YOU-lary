@@ -16,7 +16,13 @@ const navBar = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="german-words">Filter by Language</a>
+              <a class="nav-link" href="#" id="html">HTML</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="css">CSS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="javascript">Javascript</a>
             </li>
             <li>
             <input

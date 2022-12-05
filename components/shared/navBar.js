@@ -24,14 +24,6 @@ const navBar = () => {
             <li class="nav-item">
               <a class="nav-link" href="#" id="javascript">Javascript</a>
             </li>
-            <li>
-            <input
-              class="form-control mr-sm-2"
-              id="search"
-              placeholder="Search Words"
-              aria-label="Search"
-            />
-            </li>
           </ul>
           <span class="navbar-text">
             <div id="cart-button"></div>

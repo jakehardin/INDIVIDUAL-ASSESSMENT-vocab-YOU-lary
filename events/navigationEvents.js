@@ -5,7 +5,7 @@ import { signOut } from '../utils/auth';
 import { showVocab } from '../pages/vocabulary';
 
 // navigation events
-const navigationEvents = () => {
+const navigationEvents = (user) => {
   console.warn();
   // LOGOUT BUTTON
   document.querySelector('#login-form-container')
@@ -13,22 +13,23 @@ const navigationEvents = () => {
 
   // ALL VOCAB WORDS
   document.querySelector('#all-vocab').addEventListener('click', () => {
-    getVocab().then(showVocab);
+    getVocab(user.uid).then(showVocab);
+    console.warn('Hello');
   });
 
   // FILTER HTML
   document.querySelector('#html').addEventListener('click', () => {
-    wordsAreHtml().then(showVocab);
+    wordsAreHtml(user.uid).then(showVocab);
   });
 
   // FILTER CSS
   document.querySelector('#css').addEventListener('click', () => {
-    wordsAreCss().then(showVocab);
+    wordsAreCss(user.uid).then(showVocab);
   });
 
   // FILTER JAVASCRIPT
   document.querySelector('#javascript').addEventListener('click', () => {
-    wordsAreJavascript().then(showVocab);
+    wordsAreJavascript(user.uid).then(showVocab);
   });
 };
 

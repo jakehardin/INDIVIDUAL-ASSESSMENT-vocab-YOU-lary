@@ -4,8 +4,8 @@ import client from '../utils/client';
 
 const endpoint = client.databaseURL;
 
-const getVocab = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/vocabulary.json`, {
+const getVocab = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocabulary.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ const updateVocab = (payload) => new Promise((resolve, reject) => {
 });
 
 const getSingleWord = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/${firebaseKey}.json`, {
+  fetch(`${endpoint}/vocabulary/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

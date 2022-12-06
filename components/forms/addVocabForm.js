@@ -3,7 +3,7 @@ import renderToDOM from '../../utils/renderToDom';
 import selectAuthor from './selectLanguage';
 
 // USING THIS FORM FOR BOTH CREATE AND UPDATE
-const addVocabForm = (obj = {}) => {
+const addVocabForm = (obj = {}, user) => {
   clearDom();
   const domString = `
     <form id="${obj.firebaseKey ? `update-book--${obj.firebaseKey}` : 'submit-book'}" class="mb-4">
@@ -15,18 +15,18 @@ const addVocabForm = (obj = {}) => {
         <label for="description">Definition</label>
         <textarea class="form-control" placeholder="Definition" id="definition" style="height: 100px">${obj.definition || ''}</textarea>
       </div>
+
       <div class="form-group">
         <label for="price">Language</label>
         <input type="text" class="form-control" id="language" placeholder="Language" value="${obj.language || ''}" required>
       </div>
-      <div class="form-group" id="select-author">
-      </div>
+
       <button type="submit" class="btn btn-primary" id="submit-book">Submit Word
       </button>
     </form>`;
 
   renderToDOM('#form-container', domString);
-  selectAuthor(`${obj.author_id || ''}`);
+  selectAuthor(`${obj.author_id || ''}`, user);
 };
 
 export default addVocabForm;
